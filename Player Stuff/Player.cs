@@ -3,14 +3,20 @@ using System;
 
 public partial class Player : RigidBody3D
 {
-    public float speed = 5000.0f;
-    Vector2 move = Vector2.Zero;
+    [Export]
+    private float speed = 5000f;
+    [Export]
+    private float horizontalJumpStrength = 2500f;
+    [Export]
+    private float verticalJumpStrength = 500f;
+
+    private Vector3 move = Vector3.Zero;
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
 
         move.X = Input.GetAxis("ui_left", "ui_right");
-        move.Y = Input.GetAxis("ui_up", "ui_down");
+        move.Z = Input.GetAxis("ui_up", "ui_down");
         move = move.Normalized();
     }
 
@@ -18,10 +24,7 @@ public partial class Player : RigidBody3D
     {
         base._PhysicsProcess(delta);
 
-        Vector2 mousePos = GetViewport().GetMousePosition();
-
-        float deltaFloat = (float)delta * speed;
-        Vector3 mov = new(move.X * deltaFloat, 0, move.Y * deltaFloat);
+        Vector3 mov = Utilities.MultipyVector(move, speed * delta);
         ApplyCentralForce(mov);
     }
 
@@ -33,8 +36,9 @@ public partial class Player : RigidBody3D
         }
 
         Vector3 dir = Position.DirectionTo(event_position);
-        dir.Y = 500;
-        Vector3 push = dir * new Vector3(2500, 1, 2500);
+        Vector3 push = Utilities.MultipyVector(dir, horizontalJumpStrength);
+        push.Y = verticalJumpStrength;
+
         ApplyCentralForce(push);
     }
 }
