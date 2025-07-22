@@ -6,7 +6,7 @@ public partial class Player : RigidBody3D
 
     [Export] private float speed = 2500f;
     [Export] private float horizontalJumpStrength = 500f;
-    [Export] private float verticalJumpStrength = 1.5f;
+    [Export] private float verticalJumpStrength = 500f;
 
     private bool isJumping = false;
     private bool isGrounded = false;

@@ -1,60 +1,59 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch5utbrrifsxw"]
+[gd_scene load_steps=7 format=3 uid="uid://ch5utbrrifsxw"]
 
 [ext_resource type="PackedScene" uid="uid://c1e1n8w51o84j" path="res://Player Stuff/Player.tscn" id="1_mncer"]
+[ext_resource type="Texture2D" uid="uid://pr4bxarjt7ls" path="res://wooden.jpg" id="2_cguwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
-size = Vector3(1, 13.6177, 21.5237)
+size = Vector3(1, 46.7615, 79.8818)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wicfy"]
-size = Vector3(21.524, 13.7512, 1)
+size = Vector3(97.4971, 40.6013, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
-size = Vector3(30, 1, 30)
+size = Vector3(173.317, 1, 175.257)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mncer"]
 shading_mode = 0
+albedo_texture = ExtResource("2_cguwc")
 
 [node name="Test Scene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_mncer")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0.0585272, 0.5, 0.0871565)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.838671, 0.544639, 0, -0.544639, 0.838671, 0, 12.2992, 15.7971)
-current = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585272, 1.30522, 0.0871565)
+linear_damp = 0.4
 
 [node name="RigidBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.390627, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7218, 6.30884, 0.516968)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -34.1059, 17.3698, 34.1059)
 shape = SubResource("BoxShape3D_cguwc")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.40432, 6.30884, 0.516968)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 33.7411, 17.2303, -33.7514)
 shape = SubResource("BoxShape3D_cguwc")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0346889, 5.97661, -9.84386)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 27.7797, 20.5904, 27.7797)
 shape = SubResource("BoxShape3D_wicfy")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0346889, 5.97661, 10.7789)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -27.9456, 20.7179, -27.9456)
 shape = SubResource("BoxShape3D_wicfy")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199052, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_mncer")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 calculate_tangents = false
 use_collision = true
-size = Vector3(30, 1, 30)
+size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
 
-[connection signal="input_event" from="StaticBody3D" to="Player" method="Click"]
+[connection signal="input_event" from="StaticBody3D" to="Player" method="OnClick"]
