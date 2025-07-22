@@ -1,15 +1,12 @@
-[gd_scene load_steps=10 format=4 uid="uid://c1e1n8w51o84j"]
+[gd_scene load_steps=9 format=4 uid="uid://c1e1n8w51o84j"]
 
 [ext_resource type="Script" uid="uid://dxxpwicur623a" path="res://Player Stuff/Player.cs" id="1_xhfnw"]
-[ext_resource type="Texture2D" uid="uid://dspdi75c12aw1" path="res://icon.svg" id="2_kpjcp"]
 [ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Shader1.tres" id="3_kne1u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kne1u"]
-bounce = 0.5
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_kne1u"]
-height = 1.06641
-radius = 0.850586
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3tvd"]
+height = 1.15955
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e80uo"]
 render_priority = 0
@@ -57,12 +54,8 @@ script = ExtResource("1_xhfnw")
 horizontalJumpStrength = 1500.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.533203, 0)
-shape = SubResource("CylinderShape3D_kne1u")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-visible = false
-texture = ExtResource("2_kpjcp")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.563466, 0)
+shape = SubResource("CylinderShape3D_b3tvd")
 
 [node name="SlimeModel" type="Node3D" parent="."]
 
@@ -71,3 +64,7 @@ transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.0379802, 0)
 material_override = SubResource("ShaderMaterial_e80uo")
 mesh = SubResource("ArrayMesh_ceqmf")
 skeleton = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 13.0776, 15.9173)
+current = true
