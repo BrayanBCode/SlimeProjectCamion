@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pr4bxarjt7ls"
-path.s3tc="res://.godot/imported/fondo-de-madera.jpg-728afab140a36b64efbc6c8725b9b014.s3tc.ctex"
+path.s3tc="res://.godot/imported/wooden.jpg-63df5485c4fd5c7d3cd01efeae109bbb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://fondo-de-madera.jpg"
-dest_files=["res://.godot/imported/fondo-de-madera.jpg-728afab140a36b64efbc6c8725b9b014.s3tc.ctex"]
+source_file="res://wooden.jpg"
+dest_files=["res://.godot/imported/wooden.jpg-63df5485c4fd5c7d3cd01efeae109bbb.s3tc.ctex"]
 
 [params]
 
