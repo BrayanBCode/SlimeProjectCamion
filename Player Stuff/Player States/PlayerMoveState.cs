@@ -16,13 +16,14 @@ public partial class PlayerMoveState : State
         //if (@event.IsActionPressed("LMB")) return;
 
     
-        move.X = Input.GetAxis("ui_left", "ui_right");
-        move.Z = Input.GetAxis("ui_up", "ui_down");
-        move = move.Normalized();
+        
     }
 
     public override void PhysicsUpdate(double delta)
     {
+        move.X = Input.GetAxis("ui_left", "ui_right");
+        move.Z = Input.GetAxis("ui_up", "ui_down");
+        move = move.Normalized();
         Player player = (Player)stateMachine.Owner;
         player.Move(move, delta);
 
