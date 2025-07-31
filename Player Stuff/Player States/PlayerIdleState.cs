@@ -1,4 +1,5 @@
 using Godot;
+using SlimeProjectCamion.Types;
 using System;
 
 public partial class PlayerIdleState : State
@@ -22,7 +23,7 @@ public partial class PlayerIdleState : State
     public override void Update(double delta)
     {
         if (move == Vector2.Zero) return;
-        stateMachine.ChangeState("Move");
+        stateMachine.ChangeState(StatesType.Move);
     }
 
 }

@@ -1,4 +1,5 @@
 using Godot;
+using SlimeProjectCamion.Types;
 using System;
 
 public partial class PlayerMoveState : State
@@ -15,8 +16,8 @@ public partial class PlayerMoveState : State
     {
         //if (@event.IsActionPressed("LMB")) return;
 
-    
-        
+
+
     }
 
     public override void PhysicsUpdate(double delta)
@@ -29,7 +30,7 @@ public partial class PlayerMoveState : State
 
         if (player.LinearVelocity == Vector3.Zero && move == Vector3.Zero)
         {
-            stateMachine.ChangeState("Idle");
+            stateMachine.ChangeState(StatesType.Idle);
         }
     }
 }
