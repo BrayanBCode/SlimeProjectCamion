@@ -41,7 +41,7 @@ public partial class Player : RigidBody3D
         if (isGrounded)
         {
             Vector3 mov = move * speed * (float)delta;
-            ApplyForce(mov);
+            ApplyCentralForce(mov);
         }
 
         // Revisar si está en el piso
