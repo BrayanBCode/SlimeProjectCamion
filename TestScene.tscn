@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ch5utbrrifsxw"]
 
 [ext_resource type="PackedScene" uid="uid://c1e1n8w51o84j" path="res://Player Stuff/Player.tscn" id="1_mncer"]
-[ext_resource type="Texture2D" uid="uid://pr4bxarjt7ls" path="res://wooden.jpg" id="2_cguwc"]
+[ext_resource type="Texture2D" uid="uid://bbxu16u4lp0ey" path="res://wooden.jpg" id="2_cguwc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
 size = Vector3(1, 46.7615, 79.8818)
@@ -18,8 +18,12 @@ albedo_texture = ExtResource("2_cguwc")
 
 [node name="Test Scene" type="Node3D"]
 
+[node name="Player2" parent="." instance=ExtResource("1_mncer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0142744, 1.18602, 0.15901)
+linear_damp = 0.4
+
 [node name="Player" parent="." instance=ExtResource("1_mncer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585272, 1.30522, 0.0871565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585272, 1.30522, 5.61865)
 linear_damp = 0.4
 
 [node name="RigidBody3D" type="StaticBody3D" parent="."]
@@ -46,14 +50,14 @@ shape = SubResource("BoxShape3D_wicfy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199052, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_mncer")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 calculate_tangents = false
 use_collision = true
 size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
 
 [connection signal="input_event" from="StaticBody3D" to="Player" method="OnClick"]
+[connection signal="input_event" from="StaticBody3D" to="Player2" method="MouseInput"]
+[connection signal="input_event" from="StaticBody3D" to="Player2" method="OnClick"]

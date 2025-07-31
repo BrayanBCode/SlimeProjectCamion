@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=4 uid="uid://c1e1n8w51o84j"]
+[gd_scene load_steps=9 format=4 uid="uid://dc5t7lloec6l0"]
 
-[ext_resource type="Script" uid="uid://dxxpwicur623a" path="res://Player Stuff/Player.cs" id="1_xhfnw"]
-[ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Shader1.tres" id="3_kne1u"]
+[ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Shader1.tres" id="1_4w8ql"]
+[ext_resource type="Script" uid="uid://dxxpwicur623a" path="res://Player Stuff/Player.cs" id="1_wiigt"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kne1u"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wiigt"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3tvd"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wiigt"]
 height = 1.15955
+radius = 0.67627
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e80uo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s21dh"]
 render_priority = 0
-shader = ExtResource("3_kne1u")
+shader = ExtResource("1_4w8ql")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwu82"]
 
@@ -28,7 +29,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ceqmf"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_66d6k"]
 resource_name = "SlimeModel_Sphere_001"
 _surfaces = [{
 "aabb": AABB(-996.059, 37.9282, -998.028, 1992.12, 1255.01, 1996.06),
@@ -46,24 +47,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b3tvd")
 
-[node name="Player" type="RigidBody3D"]
-physics_material_override = SubResource("PhysicsMaterial_kne1u")
+[node name="TestSlime" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_wiigt")
 lock_rotation = true
 linear_damp = 5.0
-script = ExtResource("1_xhfnw")
-horizontalJumpStrength = 1500.0
+script = ExtResource("1_wiigt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.563466, 0)
-shape = SubResource("CylinderShape3D_b3tvd")
+shape = SubResource("CylinderShape3D_wiigt")
 
 [node name="SlimeModel" type="Node3D" parent="."]
 
 [node name="Sphere_001" type="MeshInstance3D" parent="SlimeModel"]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.0379802, 0)
-material_override = SubResource("ShaderMaterial_e80uo")
-mesh = SubResource("ArrayMesh_ceqmf")
+material_override = SubResource("ShaderMaterial_s21dh")
+mesh = SubResource("ArrayMesh_66d6k")
 skeleton = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 13.0776, 15.9173)
+current = true
