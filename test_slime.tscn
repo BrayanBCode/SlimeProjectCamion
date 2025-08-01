@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://dc5t7lloec6l0"]
 
-[ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Shader1.tres" id="1_4w8ql"]
+[ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Model/Shader1.tres" id="1_4w8ql"]
 [ext_resource type="Script" uid="uid://dxxpwicur623a" path="res://Player Stuff/Player.cs" id="1_wiigt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wiigt"]

@@ -11,6 +11,8 @@ public partial class Player : RigidBody3D
     private bool isJumping = false;
     private bool isGrounded = false;
     private Vector3 lastKnownMousePosition = Vector3.Zero;
+    private string playerID = "SlimeCamion";
+
 
     public override void _PhysicsProcess(double delta)
     {
@@ -24,7 +26,7 @@ public partial class Player : RigidBody3D
         lastKnownMousePosition = event_position;
     }
 
-    public void OnClick()
+    public void Jump()
     {
         Vector3 dir = Position.DirectionTo(lastKnownMousePosition);
         Vector3 push = Utilities.MultipyVector(dir, horizontalJumpStrength);

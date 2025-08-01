@@ -7,6 +7,8 @@ public partial class StateMachine : Node
 {
     [Export] public bool printChange = true;
     [Export] public State initalState;
+    private Player[] players;
+
     public State currentState;
 
     public override void _Ready()

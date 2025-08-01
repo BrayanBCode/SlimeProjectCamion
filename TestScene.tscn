@@ -53,3 +53,5 @@ calculate_tangents = false
 use_collision = true
 size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
+
+[connection signal="input_event" from="StaticBody3D" to="Player" method="MouseInput"]

@@ -2,7 +2,7 @@ using Godot;
 using SlimeProjectCamion.Types;
 using System;
 
-public partial class PlayerIdleState : State
+public partial class PlayerIdleState : PlayerState
 {
     private Vector2 move = Vector2.Zero;
 
