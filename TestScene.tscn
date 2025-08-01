@@ -18,10 +18,6 @@ albedo_texture = ExtResource("2_cguwc")
 
 [node name="Test Scene" type="Node3D"]
 
-[node name="Player2" parent="." instance=ExtResource("1_mncer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0142744, 1.18602, 0.15901)
-linear_damp = 0.4
-
 [node name="Player" parent="." instance=ExtResource("1_mncer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585272, 1.30522, 5.61865)
 linear_damp = 0.4
@@ -58,6 +54,4 @@ use_collision = true
 size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
 
-[connection signal="input_event" from="StaticBody3D" to="Player" method="OnClick"]
-[connection signal="input_event" from="StaticBody3D" to="Player2" method="MouseInput"]
-[connection signal="input_event" from="StaticBody3D" to="Player2" method="OnClick"]
+[connection signal="input_event" from="StaticBody3D" to="Player" method="MouseInput"]

@@ -11,27 +11,14 @@ public partial class Player : RigidBody3D
     private bool isJumping = false;
     private bool isGrounded = false;
     private Vector3 lastKnownMousePosition = Vector3.Zero;
-    private Vector3 move;
+    private string playerID = "SlimeCamion";
 
-    //Events keyboard
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-
-        if (@event.IsActionPressed("LMB") && isGrounded) OnClick();
-
-        move = Vector3.Zero;
-
-        move.X = Input.GetAxis("ui_left", "ui_right");
-        move.Z = Input.GetAxis("ui_up", "ui_down");
-        move = move.Normalized();
-    }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
 
-        ApplyGravity(delta);
+        //ApplyGravity(delta);
     }
 
     public void MouseInput(Node camera, InputEvent inputEvent, Vector3 event_position, Vector3 normal, int shapeIDX)
@@ -39,7 +26,7 @@ public partial class Player : RigidBody3D
         lastKnownMousePosition = event_position;
     }
 
-    public void OnClick()
+    public void Jump()
     {
         Vector3 dir = Position.DirectionTo(lastKnownMousePosition);
         Vector3 push = Utilities.MultipyVector(dir, horizontalJumpStrength);
@@ -50,13 +37,13 @@ public partial class Player : RigidBody3D
 
     // TODO: Buscar una gravedad ideal y y valores como la gente para el salto ta !!potente!! y no toma bien la posicion de evento click
 
-    private void ApplyGravity(double delta)
+    public void Move(Vector3 move, double delta)
     {
         // Movimiento solo si estás en el piso
         if (isGrounded)
         {
             Vector3 mov = move * speed * (float)delta;
-            ApplyForce(mov);
+            ApplyCentralForce(mov);
         }
 
         // Revisar si está en el piso

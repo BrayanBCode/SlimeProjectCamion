@@ -1,7 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://c1e1n8w51o84j"]
+[gd_scene load_steps=13 format=4 uid="uid://c1e1n8w51o84j"]
 
 [ext_resource type="Script" uid="uid://dxxpwicur623a" path="res://Player Stuff/Player.cs" id="1_xhfnw"]
-[ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Shader1.tres" id="3_kne1u"]
+[ext_resource type="Script" uid="uid://bnokrg5tktfwi" path="res://Player Stuff/PlayerStateMachine.cs" id="3_0sslp"]
+[ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Model/Shader1.tres" id="3_kne1u"]
+[ext_resource type="Script" uid="uid://bo7ja8ri125pr" path="res://Player Stuff/Player States/PlayerIdleState.cs" id="4_5qyqs"]
+[ext_resource type="Script" uid="uid://dnpucp7tvu3a3" path="res://Player Stuff/Player States/PlayerMoveState.cs" id="4_frxfo"]
+[ext_resource type="Script" uid="uid://dncl2aabxmmmv" path="res://Player Stuff/Player States/PlayerJumpState.cs" id="6_su8uw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kne1u"]
 
@@ -67,3 +71,19 @@ skeleton = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 13.0776, 15.9173)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initalState")]
+script = ExtResource("3_0sslp")
+initalState = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_5qyqs")
+metadata/_custom_type_script = "uid://dlrlgc2cfffri"
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("4_frxfo")
+metadata/_custom_type_script = "uid://dlrlgc2cfffri"
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("6_su8uw")
+metadata/_custom_type_script = "uid://dlrlgc2cfffri"
