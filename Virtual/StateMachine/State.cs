@@ -5,18 +5,13 @@ using Godot.Collections;
 [Tool, GlobalClass]
 public partial class State : Node
 {
-    public StateMachine stateMachine = null;
+    public StateMachine stateMachine;
 
     public virtual void Enter()
     {
         return;
     }
     public virtual void Enter(Dictionary msg)
-    {
-        return;
-    }
-
-    public virtual void UserInput(InputEvent @event)
     {
         return;
     }

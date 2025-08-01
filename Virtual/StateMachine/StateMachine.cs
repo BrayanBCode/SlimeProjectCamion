@@ -6,7 +6,7 @@ using System;
 public partial class StateMachine : Node
 {
     [Export] public bool printChange = true;
-    [Export] public State initalState;
+    [Export] public State initialState;
     private Player[] players;
 
     public State currentState;
@@ -15,9 +15,9 @@ public partial class StateMachine : Node
     {
         base._Ready();
 
-        if (!IsInstanceValid(initalState)) GD.PrintErr("TODO MAL FLACO");
+        if (!IsInstanceValid(initialState)) GD.PrintErr("TODO MAL FLACO");
 
-        currentState = initalState;
+        currentState = (PlayerState)initialState;
         currentState.Enter();
         foreach (State state in GetChildren())
         {
@@ -39,28 +39,16 @@ public partial class StateMachine : Node
         currentState.PhysicsUpdate(delta);
     }
 
-    public void ChangeState(string stateName)
+    public virtual void ChangeState(string stateName)
     {
-        // foreach (State targetState in GetChildren())
-        // {
-        //     if (targetState.Name != stateName) continue;
-
-        //     currentState.Exit();
-
-        //     currentState = targetState;
-        //     GD.Print(Name + " changed state to: " + currentState.Name);
-        //     currentState.Enter();
-
-        //     return;
-        // }
-
         State targetState = GetNode<State>(stateName);
         if (IsInstanceValid(targetState))
         {
             currentState.Exit();
-            currentState = targetState;
-            currentState.Enter();
+            currentState = (PlayerState)targetState;
             GD.Print(Name + " changed state to: " + currentState.Name);
+            currentState.Enter();
+            
             return;
         }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c1e1n8w51o84j"]
+[gd_scene load_steps=14 format=4 uid="uid://c1e1n8w51o84j"]
 
 [ext_resource type="Script" uid="uid://dxxpwicur623a" path="res://Player Stuff/Player.cs" id="1_xhfnw"]
 [ext_resource type="Script" uid="uid://bnokrg5tktfwi" path="res://Player Stuff/PlayerStateMachine.cs" id="3_0sslp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bo7ja8ri125pr" path="res://Player Stuff/Player States/PlayerIdleState.cs" id="4_5qyqs"]
 [ext_resource type="Script" uid="uid://dnpucp7tvu3a3" path="res://Player Stuff/Player States/PlayerMoveState.cs" id="4_frxfo"]
 [ext_resource type="Script" uid="uid://dncl2aabxmmmv" path="res://Player Stuff/Player States/PlayerJumpState.cs" id="6_su8uw"]
+[ext_resource type="Script" uid="uid://vooq2c2ivx3b" path="res://Player Stuff/Player States/PlayerFallState.cs" id="7_tk1yt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kne1u"]
 
@@ -53,6 +54,8 @@ shadow_mesh = SubResource("ArrayMesh_b3tvd")
 [node name="Player" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_kne1u")
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 5
 linear_damp = 5.0
 script = ExtResource("1_xhfnw")
 horizontalJumpStrength = 1500.0
@@ -72,9 +75,9 @@ skeleton = NodePath("")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 13.0776, 15.9173)
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initalState")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("3_0sslp")
-initalState = NodePath("Idle")
+initialState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_5qyqs")
@@ -87,3 +90,9 @@ metadata/_custom_type_script = "uid://dlrlgc2cfffri"
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_su8uw")
 metadata/_custom_type_script = "uid://dlrlgc2cfffri"
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("7_tk1yt")
+metadata/_custom_type_script = "uid://clffhaymod4dv"
+
+[connection signal="body_entered" from="." to="StateMachine" method="OnBodyEntered"]

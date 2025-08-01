@@ -2,6 +2,7 @@ using Godot;
 using SlimeProjectCamion.Types;
 using System;
 
+
 public partial class PlayerIdleState : PlayerState
 {
     private Vector2 move = Vector2.Zero;
@@ -12,9 +13,13 @@ public partial class PlayerIdleState : PlayerState
         move = Vector2.Zero;
     }
 
-    public override void UserInput(InputEvent @event)
+    public override void HandleInput(InputEvent eve)
     {
-        //if (@event.IsActionPressed("LMB")) return;
+        if (eve.IsActionPressed("LMB"))
+        {
+            stateMachine.ChangeState(StatesType.Jump);
+            GD.Print("YUMP");
+        }
 
         move.X = Input.GetAxis("ui_left", "ui_right");
         move.Y = Input.GetAxis("ui_up", "ui_down");

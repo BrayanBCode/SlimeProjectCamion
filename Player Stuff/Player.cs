@@ -49,9 +49,6 @@ public partial class Player : RigidBody3D
         // Revisar si está en el piso
         isGrounded = Mathf.IsEqualApprox(LinearVelocity.Y, 0, 0.1f);
     }
-
-
-
 }
 
 
