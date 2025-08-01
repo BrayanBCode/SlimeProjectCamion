@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://la8hhcpg0xli"]
+
+[ext_resource type="PackedScene" uid="uid://cocqxy708qe5e" path="res://Player Stuff/Assets/Idle Slime.glb" id="1_uqmtl"]
+
+[node name="Idle Slime" instance=ExtResource("1_uqmtl")]
