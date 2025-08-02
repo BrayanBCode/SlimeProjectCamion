@@ -4,7 +4,7 @@ class_name Player
 @export var speed: float = 2500
 @export var horizontalJumpStrength: float = 500
 @export var verticalJumpStrength: float = 500
-@export var flyTime: float = 1.5
+@export var flyTime: float = 1
 
 @onready var trajectory_parent := $TrajectoryPoints  # Nodo donde se agregarán los puntos (ej: un Node3D vacío)
 
@@ -28,6 +28,7 @@ func Jump() -> void:
 		)
 		
 	draw_trajectory(self.global_position, JumpImpulse)
+	print("JumpImpulse: ", JumpImpulse)
 	apply_central_impulse(JumpImpulse * mass)
 
 func Move(move: Vector3, delta: float) -> void:
@@ -50,7 +51,6 @@ func CalculateParabolicVelocity3D(start: Vector3, end: Vector3):
 
 func draw_trajectory(start: Vector3, velocity: Vector3, steps := 30, time_step := 0.1):
 	
-	print("start: ", start)
 	# Limpia puntos anteriores
 	for child in trajectory_parent.get_children():
 		child.queue_free()
