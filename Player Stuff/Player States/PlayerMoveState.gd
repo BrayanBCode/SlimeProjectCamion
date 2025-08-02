@@ -26,4 +26,3 @@ func PhysicsUpdate(delta: float):
 
 func Exit():
 	move = Vector3.ZERO
-

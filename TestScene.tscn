@@ -19,6 +19,8 @@ albedo_texture = ExtResource("2_cguwc")
 [node name="Test Scene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_mncer")]
+linear_damp_mode = 1
+linear_damp = 0.4
 
 [node name="RigidBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.390627, 0)
@@ -51,3 +53,5 @@ calculate_tangents = false
 use_collision = true
 size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
+
+[connection signal="input_event" from="StaticBody3D" to="Player" method="MouseInput"]

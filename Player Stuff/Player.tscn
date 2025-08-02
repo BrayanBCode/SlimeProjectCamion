@@ -56,7 +56,6 @@ physics_material_override = SubResource("PhysicsMaterial_kne1u")
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
-linear_damp = 0.4
 script = ExtResource("1_frxfo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -78,6 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 1
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("3_su8uw")
+printChange = false
 initialState = NodePath("Idle")
 metadata/_custom_type_script = "uid://djivtitqxf4yy"
 
@@ -96,5 +96,7 @@ metadata/_custom_type_script = "uid://ckrb3pwur4siw"
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("7_tk1yt")
 metadata/_custom_type_script = "uid://ckrb3pwur4siw"
+
+[node name="TrajectoryPoints" type="Node" parent="."]
 
 [connection signal="body_entered" from="." to="StateMachine" method="OnBodyEntered"]

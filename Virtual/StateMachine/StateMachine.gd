@@ -29,7 +29,7 @@ func ChangeState(stateName: String) -> void:
 	if (is_instance_valid(targetState)):
 		currentState.Exit()
 		currentState = targetState
-		print_debug(self.name + " changed state to: " + currentState.name)
+		if(printChange): print_debug(self.name + " changed state to: " + currentState.name)
 		if(animationPlayer.has_animation(currentState.animationName)):
 			animationPlayer.play(currentState.animationName)
 		currentState.Enter()
