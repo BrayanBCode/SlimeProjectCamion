@@ -19,8 +19,6 @@ albedo_texture = ExtResource("2_cguwc")
 [node name="Test Scene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_mncer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585272, 12.0982, 5.61865)
-linear_damp = 0.4
 
 [node name="RigidBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.390627, 0)

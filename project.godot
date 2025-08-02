@@ -17,7 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Utilities="*res://Utilities.cs"
+Utilities="*res://Global/Utilities.gd"
+General="*res://Global/General.gd"
+Enums="*res://Global/Enums.gd"
 
 [dotnet]
 
