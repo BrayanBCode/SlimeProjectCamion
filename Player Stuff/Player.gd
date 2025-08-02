@@ -45,7 +45,7 @@ func CalculateParabolicVelocity3D(start: Vector3, end: Vector3):
 	var verticalDes = desplazamiento.y
 	
 	var horizontalVel = horizontalDes / flyTime
-	var verticalVel = (verticalDes + gravity * flyTime * flyTime) / flyTime
+	var verticalVel = (verticalDes + 0.5 * gravity * flyTime**2) / flyTime
 	return horizontalVel + Vector3.UP * verticalVel
 
 
@@ -57,7 +57,7 @@ func draw_trajectory(start: Vector3, velocity: Vector3, steps := 30, time_step :
 
 	var t := 0.0
 	for i in steps:
-		var pos = start + (velocity * t) + Vector3(0, -gravity, 0) * t * t
+		var pos = start + (velocity * t) + Vector3(0, -gravity * 0.5, 0) * t * t
 
 		var point = MeshInstance3D.new()
 		point.mesh = SphereMesh.new()

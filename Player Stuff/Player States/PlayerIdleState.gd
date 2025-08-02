@@ -8,6 +8,7 @@ func _ready() -> void:
 	animationName = ""
 
 func Enter(_msg := {}) -> void:
+	
 	move = Vector2.ZERO
 
 func HandleInput(input: InputEvent) -> void:

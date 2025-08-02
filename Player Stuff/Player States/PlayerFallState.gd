@@ -8,6 +8,7 @@ func _ready() -> void:
 func OnBodyEntered(_body: Node) -> void:
 	if (is_zero_approx(stateMachine.GetThisPlayer().linear_velocity.y)):
 		stateMachine.ChangeState("Idle")
+	stateMachine.GetThisPlayer().linear_velocity = Vector3.ZERO
 
 func PhysicsUpdate(delta: float):
 	var player = (stateMachine as PlayerStateMachine).GetThisPlayer()
