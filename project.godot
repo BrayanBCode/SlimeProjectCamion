@@ -25,6 +25,10 @@ Enums="*res://Global/Enums.gd"
 
 project/assembly_name="Slime Project camion"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 ui_left={

@@ -4,6 +4,9 @@ extends PlayerState
 
 var move: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	animationName = ""
+
 func Enter(_msg := {}) -> void:
 	move = Vector2.ZERO
 

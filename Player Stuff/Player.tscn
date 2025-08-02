@@ -71,6 +71,8 @@ material_override = SubResource("ShaderMaterial_e80uo")
 mesh = SubResource("ArrayMesh_ceqmf")
 skeleton = NodePath("")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SlimeModel"]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 13.0776, 15.9173)
 

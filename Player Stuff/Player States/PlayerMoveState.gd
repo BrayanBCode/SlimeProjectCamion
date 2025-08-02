@@ -4,6 +4,10 @@ extends PlayerState
 
 var move: Vector3 = Vector3.ZERO
 
+
+func _ready() -> void:
+	animationName = ""
+
 func HandleInput(input: InputEvent):
 	if (input.is_action_pressed("LMB")):
 		stateMachine.ChangeState("Jump")

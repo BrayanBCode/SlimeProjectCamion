@@ -10,7 +10,7 @@ var lastKnownMousePosition: Vector3 = Vector3.ZERO
 var playerID: String = "SlimeCamion"
 
 
-func MouseInput(camera: Node, inputEvent: InputEvent, event_position: Vector3, normal: Vector3, shapeIDX: int) -> void:
+func MouseInput(_camera: Node, _inputEvent: InputEvent, event_position: Vector3, _normal: Vector3, _shapeIDX: int) -> void:
 	lastKnownMousePosition = event_position
 
 func Jump() -> void:

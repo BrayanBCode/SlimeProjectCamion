@@ -3,7 +3,7 @@ class_name State
 
 
 var stateMachine: StateMachine
-
+var animationName: String
 
 func Enter(_msg := {}) -> void:
 	pass
