@@ -10,7 +10,7 @@ size = Vector3(1, 46.7615, 79.8818)
 size = Vector3(97.4971, 40.6013, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
-size = Vector3(173.317, 1, 175.257)
+size = Vector3(80.059, 1, 97.546)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mncer"]
 shading_mode = 0
@@ -58,7 +58,7 @@ size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3612, 7.14223, 6.4198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3612, 8.8883, 6.4198)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_go42g")

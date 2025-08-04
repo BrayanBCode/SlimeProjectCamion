@@ -56,6 +56,7 @@ physics_material_override = SubResource("PhysicsMaterial_kne1u")
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
+linear_damp = 1.0
 script = ExtResource("1_frxfo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
