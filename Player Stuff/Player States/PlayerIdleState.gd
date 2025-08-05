@@ -5,7 +5,7 @@ var move: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	animationName = ""
+	animationName = "Idle"
 
 func Enter(_msg := {}) -> void:
 	move = Vector2.ZERO

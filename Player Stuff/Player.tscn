@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c1e1n8w51o84j"]
+[gd_scene load_steps=19 format=4 uid="uid://c1e1n8w51o84j"]
 
 [ext_resource type="Script" uid="uid://c3m82q7845keu" path="res://Player Stuff/Player.gd" id="1_frxfo"]
 [ext_resource type="Shader" uid="uid://1sy5e7o3ctc1" path="res://Player Stuff/Model/Shader1.tres" id="3_kne1u"]
@@ -51,6 +51,56 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_b3tvd")
 
+[sub_resource type="Animation" id="Animation_tk1yt"]
+resource_name = "Idle"
+length = 0.500002
+loop_mode = 2
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.1, 0.08, 0.1, 0.0666667, 1, 0.095, 0.085, 0.095, 0.266667, 1, 0.085, 0.095, 0.085, 0.333333, 1, 0.083, 0.097, 0.083, 0.5, 1, 0.08, 0.1, 0.08)
+
+[sub_resource type="Animation" id="Animation_jtld3"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_2vpqw"]
+resource_name = "Jump"
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.06, 0.12, 0.06)
+
+[sub_resource type="Animation" id="Animation_1y2hx"]
+resource_name = "PreJump"
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.14, 0.03, 0.14)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vpqw"]
+_data = {
+&"Idle": SubResource("Animation_tk1yt"),
+&"Jump": SubResource("Animation_2vpqw"),
+&"PreJump": SubResource("Animation_1y2hx"),
+&"RESET": SubResource("Animation_jtld3")
+}
+
 [node name="Player" type="RigidBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_kne1u")
 lock_rotation = true
@@ -64,17 +114,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.563466, 0)
 shape = SubResource("CylinderShape3D_b3tvd")
 
 [node name="SlimeModel" type="Node3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 
 [node name="Sphere_001" type="MeshInstance3D" parent="SlimeModel"]
-transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.0379802, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0379802, 0)
 material_override = SubResource("ShaderMaterial_e80uo")
 mesh = SubResource("ArrayMesh_ceqmf")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SlimeModel"]
+libraries = {
+&"": SubResource("AnimationLibrary_2vpqw")
+}
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.867062, 0.4982, 0, -0.4982, 0.867062, 0, 13.0776, 15.9173)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 15.5048, 9.65126)
+fov = 70.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("3_su8uw")

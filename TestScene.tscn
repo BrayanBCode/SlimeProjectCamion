@@ -3,6 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://c1e1n8w51o84j" path="res://Player Stuff/Player.tscn" id="1_mncer"]
 [ext_resource type="Texture2D" uid="uid://bbxu16u4lp0ey" path="res://wooden.jpg" id="2_cguwc"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_go42g"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mncer"]
+shading_mode = 0
+albedo_texture = ExtResource("2_cguwc")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_cguwc"]
 size = Vector3(1, 46.7615, 79.8818)
 
@@ -12,16 +19,22 @@ size = Vector3(97.4971, 40.6013, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_mncer"]
 size = Vector3(80.059, 1, 97.546)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mncer"]
-shading_mode = 0
-albedo_texture = ExtResource("2_cguwc")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_go42g"]
-size = Vector3(4, 1, 4)
-
 [node name="Test Scene" type="Node3D"]
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4089, 15.3298, -0.392033)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_go42g")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D2"]
+calculate_tangents = false
+use_collision = true
+size = Vector3(4, 1, 4)
+material = SubResource("StandardMaterial3D_mncer")
+
 [node name="Player" parent="." instance=ExtResource("1_mncer")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 can_sleep = false
 linear_damp_mode = 1
 
@@ -45,29 +58,30 @@ shape = SubResource("BoxShape3D_wicfy")
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -27.9456, 20.7179, -27.9456)
 shape = SubResource("BoxShape3D_wicfy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="Suelo" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199052, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Suelo"]
 shape = SubResource("BoxShape3D_mncer")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Suelo"]
 calculate_tangents = false
 use_collision = true
 size = Vector3(80.0586, 1, 97.5459)
 material = SubResource("StandardMaterial3D_mncer")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3612, 8.8883, 6.4198)
+[node name="Plataforma" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3612, 8.8883, 9.14368)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plataforma"]
 shape = SubResource("BoxShape3D_go42g")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Plataforma"]
 calculate_tangents = false
 use_collision = true
 size = Vector3(4, 1, 4)
 material = SubResource("StandardMaterial3D_mncer")
 
-[connection signal="input_event" from="StaticBody3D" to="Player" method="MouseInput"]
 [connection signal="input_event" from="StaticBody3D2" to="Player" method="MouseInput"]
+[connection signal="input_event" from="Suelo" to="Player" method="MouseInput"]
+[connection signal="input_event" from="Plataforma" to="Player" method="MouseInput"]
