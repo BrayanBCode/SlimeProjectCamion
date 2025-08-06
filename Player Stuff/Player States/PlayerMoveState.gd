@@ -20,8 +20,14 @@ func PhysicsUpdate(delta: float):
 	var player: Player = stateMachine.GetThisPlayer()
 	player.Move(move, delta)
 	
+	if (!player.isGrounded):
+		stateMachine.ChangeState("Fall")
+	
 	if (player.linear_velocity == Vector3.ZERO && move == Vector3.ZERO):
 		stateMachine.ChangeState("Idle")
+		
+
+	
 
 func Exit():
 	move = Vector3.ZERO

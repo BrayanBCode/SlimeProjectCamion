@@ -63,16 +63,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.1, 0.08, 0.1, 0.0666667, 1, 0.095, 0.085, 0.095, 0.266667, 1, 0.085, 0.095, 0.085, 0.333333, 1, 0.083, 0.097, 0.083, 0.5, 1, 0.08, 0.1, 0.08)
 
-[sub_resource type="Animation" id="Animation_jtld3"]
-length = 0.001
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sphere_001")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
-
 [sub_resource type="Animation" id="Animation_2vpqw"]
 resource_name = "Jump"
 tracks/0/type = "scale_3d"
@@ -92,6 +82,16 @@ tracks/0/path = NodePath("Sphere_001")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0.14, 0.03, 0.14)
+
+[sub_resource type="Animation" id="Animation_jtld3"]
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sphere_001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2vpqw"]
 _data = {
@@ -133,7 +133,6 @@ fov = 70.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialState")]
 script = ExtResource("3_su8uw")
-printChange = false
 initialState = NodePath("Idle")
 metadata/_custom_type_script = "uid://djivtitqxf4yy"
 
